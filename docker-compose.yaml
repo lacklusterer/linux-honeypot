@@ -1,0 +1,27 @@
+services:
+  honeypot:
+    image: cowrie/cowrie
+    container_name: cowrie_honeypot
+    ports:
+      - "2222:2222"  # SSH honeypot port
+      - "2223:2223"  # Telnet honeypot port
+    networks:
+      honeypot_net:
+
+  webservice:
+    image: nginx:latest
+    container_name: web_target
+    ports:
+      - "8080:80"
+    volumes:
+      - ./web_content:/usr/share/nginx/html
+    networks:
+      honeypot_net:
+
+# volumes:
+#   cowrie_data:
+#   cowrie_log:
+
+networks:
+  honeypot_net:
+    driver: bridge
