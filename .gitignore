@@ -1,0 +1,6 @@
+dionaea/lib/
+dionaea/log/
+dionaea/etc/dionaea/ihandlers-available/
+dionaea/etc/dionaea/ihandlers-enabled/
+dionaea/etc/dionaea/services-available/
+dionaea/etc/dionaea/services-enabled/
