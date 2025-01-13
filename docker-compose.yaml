@@ -10,21 +10,18 @@ services:
       - "8080:80"
       - "3306:3306"
     volumes:
-      - ./dionaea/etc:/opt/dionaea/etc
-      - ./dionaea/lib:/opt/dionaea/var/lib
-      - ./dionaea/log:/opt/dionaea/var/log
+      - ./honeypot/etc:/opt/dionaea/etc
+      - ./honeypot/lib:/opt/dionaea/var/lib
+      - ./honeypot/log:/opt/dionaea/var/log
     environment:
       - TZ=Asia/Ho_Chi_Minh
+    networks:
+      custom_network:
+        ipv4_address: 172.18.0.10
 
-  # webservice:
-  #   image: nginx:latest
-  #   container_name: web_target
-  #   ports:
-  #     - "8080:80"
-  #   volumes:
-  #     - ./web_content:/usr/share/nginx/html
-  #   networks:
-  #     honeypot_net:
-# networks:
-#   honeypot_net:
-#     driver: bridge
+networks:
+  custom_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16
