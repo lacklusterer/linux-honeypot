@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   dionaea:
     image: dinotools/dionaea
@@ -16,12 +14,8 @@ services:
     environment:
       - TZ=Asia/Ho_Chi_Minh
     networks:
-      custom_network:
-        ipv4_address: 172.18.0.10
+      honeypot_network:
 
 networks:
-  custom_network:
+  honeypot_network:
     driver: bridge
-    ipam:
-      config:
-        - subnet: 172.18.0.0/16
