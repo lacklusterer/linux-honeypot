@@ -1,7 +1,7 @@
-honeypot_root/etc/dionaea/ihandlers-available/
-honeypot_root/etc/dionaea/ihandlers-enabled/
-honeypot_root/etc/dionaea/services-available/
-honeypot_root/etc/dionaea/services-enabled/
-
-honeypot_root/var/lib/dionaea/bistreams/
+honeypot_root/var/lib
 honeypot_root/var/log
+honeypot_root/var/run
+
+*.sqlite
+*.pdf
+
