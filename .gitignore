@@ -1,6 +1,7 @@
-honeypot/lib/
-honeypot/log/
-honeypot/etc/dionaea/ihandlers-available/
-honeypot/etc/dionaea/ihandlers-enabled/
-honeypot/etc/dionaea/services-available/
-honeypot/etc/dionaea/services-enabled/
+honeypot_root/lib/
+honeypot_root/log/
+honeypot_root/etc/dionaea/ihandlers-available/
+honeypot_root/etc/dionaea/ihandlers-enabled/
+honeypot_root/etc/dionaea/services-available/
+honeypot_root/etc/dionaea/services-enabled/
+honeypot_root/var/lib/dionaea/bistreams/
