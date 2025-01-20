@@ -4,18 +4,32 @@ services:
     container_name: dionaea_honeypot
     restart: always
     ports:
-      - "2121:21"
-      - "8080:80"
-      - "3306:3306"
+      - "2121:21"  # FTP
+      - "8080:80"  # HTTP
+      - "3306:3306"  #MYSQL
     volumes:
-      - ./honeypot/etc:/opt/dionaea/etc
-      - ./honeypot/lib:/opt/dionaea/var/lib
-      - ./honeypot/log:/opt/dionaea/var/log
+      - ./honeypot_root/etc:/opt/dionaea/etc
+      - ./honeypot_root/var/lib:/opt/dionaea/var/lib
+      - ./honeypot_root/var/log:/opt/dionaea/var/log
+    user: "${UID}:${GID}"
     environment:
       - TZ=Asia/Ho_Chi_Minh
     networks:
-      honeypot_network:
+      honeypot_net:
+
+  honeypot:
+    image: cowrie/cowrie
+    container_name: cowrie_honeypot
+    ports:
+      - "2222:22"  # SSH
+      - "2323:23"  # Telnet
+    volumes:
+      - ./honeypot_root/etc/cowrie:/cowrie/cowrie-git/etc
+      - ./honeypot_root/var:/cowrie/cowrie-git/var
+    user: "${UID}:${GID}"
+    networks:
+      honeypot_net:
 
 networks:
-  honeypot_network:
+  honeypot_net:
     driver: bridge
